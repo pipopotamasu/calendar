@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './Navigation';
+import App from './src/Navigation';
 
 AppRegistry.registerComponent('calendar', () => App);

@@ -12,19 +12,10 @@ import {
   View
 } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import HomeScreen from './src/components/Home';
+import HomeScreen from './components/Home';
+import CalendarScreen from './components/Calendar';
+import DiscriptionScreen from './components/Discription'
 
-const CalendarScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#333' }}>
-    <Text style={{ color: 'white' }}>Calendar Screen</Text>
-  </View>
-);
-
-const DiscriptionScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#333' }}>
-    <Text style={{ color: 'white' }}>Discription Screen</Text>
-  </View>
-);
 
 const RootTabs = TabNavigator(
   {
