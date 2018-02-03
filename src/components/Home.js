@@ -9,11 +9,19 @@ import {
 
 
 export default class App extends Component<{}> {
+  today() {
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = today.getMonth() + 1
+    const day = today.getDate()
+    return `${year}年${month}月${day}日`;
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.dateContainer}>
-          <Text>date</Text>
+          <Text>{ this.today() + 'のTodo' }</Text>
         </View>
         <View style={styles.gaugeContainer}>
           <Text>gauge</Text>
