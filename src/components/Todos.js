@@ -13,13 +13,13 @@ export default class Todos extends Component<{}> {
     super(props);
 
     this.state = {
-      list: [{ text: 'test1', done: false }, { text: 'test2', done: true }],
+      todos: [{ text: 'test1', done: false }, { text: 'test2', done: true }],
     };
   }
 
   render() {
     const {
-      list,
+      todos,
     } = this.state;
 
     return (
@@ -28,10 +28,10 @@ export default class Todos extends Component<{}> {
           <View style={styles.todoListContainer}>
             <FlatList
               style={styles.todoList}
-              data={list}
-              renderItem={({ list, index }) => (
+              data={todos}
+              renderItem={({ item, index }) => (
                 <TodoItem
-                  {...list}
+                  {...item}
                 />
               )}
             />
