@@ -5,6 +5,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Todos from './Todos';
 
 
 
@@ -27,7 +28,7 @@ export default class App extends Component<{}> {
           <Text>gauge</Text>
         </View>
         <View style={styles.todosContainer}>
-          <Text>Todos</Text>
+          <Todos></Todos>
         </View>
       </View>
     );
