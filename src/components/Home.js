@@ -5,7 +5,7 @@ import {
   Text,
   View
 } from 'react-native';
-import Todos from './Todos';
+import Todos from './todo/Todos';
 
 
 
