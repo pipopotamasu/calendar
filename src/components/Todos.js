@@ -45,7 +45,6 @@ export default class Todos extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333',
     paddingTop: 40,
     alignItems: 'center',
   },

@@ -39,8 +39,6 @@ const TodoItem = (props) => {
     done,
   } = props;
 
-  console.log(props)
-
   return (
     <View style={styles.container}>
       <View style={styles.left}>
@@ -49,11 +47,6 @@ const TodoItem = (props) => {
         </Button>
         <Text style={[styles.text, done && styles.doneText]} >{text}</Text>
       </View>
-      <Button
-        style={styles.deleteButton}
-      >
-        Delete
-      </Button>
     </View>
   );
 }
