@@ -9,7 +9,7 @@ import Todos from './todo/Todos';
 
 
 
-export default class App extends Component<{}> {
+export default class App extends Component {
   today() {
     const today = new Date()
     const year = today.getFullYear()
