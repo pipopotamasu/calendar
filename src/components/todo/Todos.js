@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import TodoItem from './TodoItem'
 
-export default class Todos extends Component<{}> {
+export default class Todos extends Component {
   constructor(props) {
     super(props);
 
