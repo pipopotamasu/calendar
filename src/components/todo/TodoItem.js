@@ -37,12 +37,19 @@ const TodoItem = (props) => {
   const {
     text,
     done,
+    index,
+    onToggle,
   } = props;
+
+  console.log(index)
 
   return (
     <View style={styles.container}>
       <View style={styles.left}>
-        <CheckBox></CheckBox>
+        <CheckBox
+          onClick={()=>onToggle(index)}
+          isChecked={done}
+        ></CheckBox>
         <Text style={[styles.text, done && styles.doneText]} >{text}</Text>
       </View>
     </View>

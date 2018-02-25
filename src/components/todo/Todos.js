@@ -13,8 +13,17 @@ export default class Todos extends Component {
     super(props);
 
     this.state = {
-      todos: [{ text: 'test1', done: false }, { text: 'test2', done: true }],
+      todos: [{ id: 1, text: 'test1', done: false }, { id: 2, text: 'test2', done: true }],
     };
+  }
+
+  _toggle = (index) => () => {
+    const todos = [].concat(this.state.todos);
+    todos[index].done = !todos[index].done;
+
+    this.setState({
+      todos,
+    });
   }
 
   render() {
@@ -32,6 +41,8 @@ export default class Todos extends Component {
               keyExtractor={( item, index) => index}
               renderItem={({ item, index }) => (
                 <TodoItem
+                  onToggle={this._toggle(index)}
+                  index={index}
                   {...item}
                 />
               )}
