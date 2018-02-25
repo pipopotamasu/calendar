@@ -8,13 +8,25 @@ import {
 } from 'react-native';
 import TodoItem from './TodoItem'
 
+const INITIAL_TODOS = [{ text: 'test1', done: false },
+                       { text: 'test2', done: false },
+                       { text: 'test3', done: false },
+                       { text: 'test4', done: false },
+                       { text: 'test5', done: false }]
+
 export default class Todos extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      todos: [{ id: 1, text: 'test1', done: false }, { id: 2, text: 'test2', done: true }],
+      todos: INITIAL_TODOS,
     };
+  }
+
+  componentWillMount() {
+    // exist today's todos?
+    // register today's todos if exists
+    // fetch today's todos if not exists
   }
 
   _toggle = (index) => () => {
