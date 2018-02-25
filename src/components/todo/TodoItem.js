@@ -5,6 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Button from './Button';
+import CheckBox from 'react-native-check-box'
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +43,7 @@ const TodoItem = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.left}>
+        <CheckBox></CheckBox>
         <Button>
           {done? "Undo" : "Done"}
         </Button>
