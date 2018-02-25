@@ -29,6 +29,7 @@ export default class Todos extends Component {
             <FlatList
               style={styles.todoList}
               data={todos}
+              keyExtractor={( item, index) => index}
               renderItem={({ item, index }) => (
                 <TodoItem
                   {...item}
