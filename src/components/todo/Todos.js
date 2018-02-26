@@ -7,12 +7,17 @@ import {
   FlatList,
 } from 'react-native';
 import TodoItem from './TodoItem'
+import Store from 'react-native-store';
 
-const INITIAL_TODOS = [{ text: 'test1', done: false },
-                       { text: 'test2', done: false },
-                       { text: 'test3', done: false },
-                       { text: 'test4', done: false },
-                       { text: 'test5', done: false }]
+const DB = {
+  'todos': Store.model('todos')
+}
+
+const INITIAL_TODOS = [{ id: 1, text: 'test1', done: false },
+                       { id: 2, text: 'test2', done: false },
+                       { id: 3, text: 'test3', done: false },
+                       { id: 4, text: 'test4', done: false },
+                       { id: 5, text: 'test5', done: false }]
 
 export default class Todos extends Component {
   constructor(props) {
@@ -26,8 +31,20 @@ export default class Todos extends Component {
   componentWillMount() {
     const today = this.props.today
     // exist today's todos?
-    // register today's todos if exists
-    // fetch today's todos if not exists
+    DB.todos.find({
+        where: {
+            and: [{ todos: { created_at: today } }]
+        },
+        order: {
+            id: 'ASC',
+        }
+    }).then(resp => {
+      if (resp === null) {
+        // register today's todos if exists
+      } else {
+        // fetch today's todos if not exists
+      }
+    })
   }
 
   _toggle = (index) => () => {
