@@ -15,7 +15,7 @@ export default class App extends Component {
     const year = today.getFullYear()
     const month = today.getMonth() + 1
     const day = today.getDate()
-    return `${year}年${month}月${day}日`;
+    return `${year}-${month}-${day}`;
   }
 
   render() {
@@ -28,7 +28,9 @@ export default class App extends Component {
           <Text>gauge</Text>
         </View>
         <View style={styles.todosContainer}>
-          <Todos></Todos>
+          <Todos
+            today={this.today()}
+          ></Todos>
         </View>
       </View>
     );

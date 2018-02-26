@@ -24,6 +24,7 @@ export default class Todos extends Component {
   }
 
   componentWillMount() {
+    const today = this.props.today
     // exist today's todos?
     // register today's todos if exists
     // fetch today's todos if not exists
