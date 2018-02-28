@@ -10,7 +10,7 @@ import TodoItem from './TodoItem'
 import Store from 'react-native-store';
 
 const DB = {
-  'todos': Store.model('todos')
+  'todo': Store.model('todo')
 }
 
 const INITIAL_TODOS = [{ id: 1, text: 'test1', done: false, created_at: null },
@@ -31,9 +31,9 @@ export default class Todos extends Component {
   componentWillMount() {
     const today = this.props.today
 
-    DB.todos.find({
+    DB.todo.find({
         where: {
-            and: [{ todos: { created_at: today } }]
+            and: [{ todo: { created_at: today } }]
         },
         order: {
             id: 'ASC',
