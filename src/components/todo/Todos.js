@@ -13,11 +13,11 @@ const DB = {
   'todos': Store.model('todos')
 }
 
-const INITIAL_TODOS = [{ id: 1, text: 'test1', done: false },
-                       { id: 2, text: 'test2', done: false },
-                       { id: 3, text: 'test3', done: false },
-                       { id: 4, text: 'test4', done: false },
-                       { id: 5, text: 'test5', done: false }]
+const INITIAL_TODOS = [{ id: 1, text: 'test1', done: false, created_at: null },
+                       { id: 2, text: 'test2', done: false, created_at: null },
+                       { id: 3, text: 'test3', done: false, created_at: null },
+                       { id: 4, text: 'test4', done: false, created_at: null },
+                       { id: 5, text: 'test5', done: false, created_at: null }]
 
 export default class Todos extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export default class Todos extends Component {
 
   componentWillMount() {
     const today = this.props.today
-    // exist today's todos?
+
     DB.todos.find({
         where: {
             and: [{ todos: { created_at: today } }]
@@ -39,10 +39,12 @@ export default class Todos extends Component {
             id: 'ASC',
         }
     }).then(resp => {
+      // exist today's todos?
       if (resp === null) {
-        // register today's todos if exists
+        // register today's todos if not exists
+
       } else {
-        // fetch today's todos if not exists
+        // fetch today's todos if exists
       }
     })
   }
