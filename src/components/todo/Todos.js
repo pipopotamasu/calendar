@@ -28,28 +28,36 @@ export default class Todos extends Component {
     };
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const today = this.props.today
+    await DB.todo.destroy()
 
-    DB.todo.find({
+    const res = await DB.todo.find({
         where: {
             and: [{ todo: { created_at: today } }]
         },
         order: {
             id: 'ASC',
         }
-    }).then(resp => {
-      // exist today's todos?
-      if (resp === null) {
-        // register today's todos if not exists
+    })
 
-      } else {
-        // fetch today's todos if exists
-      }
+    // exist today's todos?
+    if (res === null) {
+      // register today's todos if not exists
+      this.saveTodos(this.state.todos)
+    } else {
+      // fetch today's todos if exists
+    }
+  }
+
+  saveTodos = (todos) => {
+    todos.forEach(todo => {
+      DB.todo.add(todo)
     })
   }
 
   _toggle = (index) => () => {
+    console.log(DB.todo.find())
     const todos = [].concat(this.state.todos);
     todos[index].done = !todos[index].done;
 
