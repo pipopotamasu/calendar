@@ -50,14 +50,16 @@ export default class Todos extends Component {
     }
   }
 
-  saveTodos = (todos) => {
-    todos.forEach(todo => {
-      DB.todo.add(todo)
-    })
+  async saveTodos(todos) {
+    const today = this.props.today
+    for(let i in todos) {
+      await DB.todo.add(Object.assign(todos[i], { created_at: today }))
+    }
+    const res = await DB.todo.find()
+    console.log(res)
   }
 
   _toggle = (index) => () => {
-    console.log(DB.todo.find())
     const todos = [].concat(this.state.todos);
     todos[index].done = !todos[index].done;
 
