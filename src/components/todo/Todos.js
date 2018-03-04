@@ -40,14 +40,15 @@ export default class Todos extends Component {
         }
     })
 
-    console.log(res)
-
     // exist today's todos?
     if (res === null) {
       // register today's todos if not exists
       this.saveTodos(this.state.todos)
     } else {
       // fetch today's todos if exists
+      this.setState({
+        todos: res
+      });
     }
   }
 
