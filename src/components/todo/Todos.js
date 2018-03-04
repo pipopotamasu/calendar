@@ -30,16 +30,17 @@ export default class Todos extends Component {
 
   async componentWillMount() {
     const today = this.props.today
-    await DB.todo.destroy()
 
     const res = await DB.todo.find({
         where: {
-            and: [{ todo: { created_at: today } }]
+          created_at: today
         },
         order: {
             id: 'ASC',
         }
     })
+
+    console.log(res)
 
     // exist today's todos?
     if (res === null) {
@@ -55,8 +56,6 @@ export default class Todos extends Component {
     for(let i in todos) {
       await DB.todo.add(Object.assign(todos[i], { created_at: today }))
     }
-    const res = await DB.todo.find()
-    console.log(res)
   }
 
   _toggle = (index) => () => {
