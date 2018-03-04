@@ -41,8 +41,6 @@ const TodoItem = (props) => {
     onToggle,
   } = props;
 
-  console.log(index)
-
   return (
     <View style={styles.container}>
       <View style={styles.left}>
