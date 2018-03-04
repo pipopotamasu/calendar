@@ -59,9 +59,15 @@ export default class Todos extends Component {
     }
   }
 
+  async updateTodo(todo) {
+    await DB.todo.updateById(todo, todo._id)
+  }
+
   _toggle = (index) => () => {
     const todos = [].concat(this.state.todos);
     todos[index].done = !todos[index].done;
+
+    this.updateTodo(todos[index])
 
     this.setState({
       todos,
