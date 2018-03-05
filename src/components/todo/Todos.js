@@ -24,7 +24,7 @@ export default class Todos extends Component {
     super(props);
 
     this.state = {
-      todos: INITIAL_TODOS,
+      todos: [],
     };
   }
 
@@ -43,7 +43,8 @@ export default class Todos extends Component {
     // exist today's todos?
     if (res === null) {
       // register today's todos if not exists
-      this.saveTodos(this.state.todos)
+      await this.saveTodos(this.state.todos)
+      this.setState({todos: INITIAL_TODOS})
     } else {
       // fetch today's todos if exists
       this.setState({
@@ -54,8 +55,8 @@ export default class Todos extends Component {
 
   async saveTodos(todos) {
     const today = this.props.today
-    for(let i in todos) {
-      await DB.todo.add(Object.assign(todos[i], { created_at: today }))
+    for(let i in INITIAL_TODOS) {
+      await DB.todo.add(Object.assign(INITIAL_TODOS[i], { created_at: today }))
     }
   }
 
