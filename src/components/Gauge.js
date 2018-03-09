@@ -5,11 +5,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import Store from 'react-native-store';
-
-const DB = {
-  'todo': Store.model('todo')
-}
 
 export default class Gauge extends Component {
   constructor(props) {
@@ -18,6 +13,10 @@ export default class Gauge extends Component {
     this.state = {
       todos: [],
     };
+  }
+
+  componentDidMount() {
+    console.log('gauge')
   }
 
   render() {
