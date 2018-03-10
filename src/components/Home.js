@@ -6,6 +6,7 @@ import {
   View
 } from 'react-native';
 import Todos from './todo/Todos';
+import Gauge from './Gauge';
 import Store from 'react-native-store';
 
 const DB = {
@@ -94,7 +95,7 @@ export default class App extends Component {
           <Text>{ this.today() + 'のTodo' }</Text>
         </View>
         <View style={styles.gaugeContainer}>
-          <Text>gauge</Text>
+          <Gauge></Gauge>
         </View>
         <View style={styles.todosContainer}>
           <Todos

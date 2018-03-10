@@ -20,20 +20,11 @@ export default class Gauge extends Component {
   }
 
   render() {
-
     return (
-      <View style={styles.gaugeContainer}>
-        <Text>gauge</Text>
-      </View>
+      <Text>gauge</Text>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    gaugeContainer: {
-        flex: 1,
-        backgroundColor: '#ff9966',
-        alignItems: 'center',
-        justifyContent: 'center',
-        },
 });
