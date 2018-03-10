@@ -95,7 +95,7 @@ export default class App extends Component {
           <Text>{ this.today() + 'のTodo' }</Text>
         </View>
         <View style={styles.gaugeContainer}>
-          <Gauge></Gauge>
+          <Gauge todos={todos}></Gauge>
         </View>
         <View style={styles.todosContainer}>
           <Todos

@@ -11,12 +11,12 @@ export default class Gauge extends Component {
     super(props);
 
     this.state = {
-      todos: [],
+      // todos: [],
     };
   }
 
-  componentDidMount() {
-    console.log('gauge')
+  componentDidUpdate() {
+    console.log(this.props.todos)
   }
 
   render() {
