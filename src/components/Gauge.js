@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import * as Progress from 'react-native-progress';
 
 export default class Gauge extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Gauge extends Component {
 
   render() {
     return (
-      <Text>gauge</Text>
+      <Progress.Bar progress={0.3} width={270} height={15} />
     );
   }
 }
