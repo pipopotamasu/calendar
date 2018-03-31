@@ -12,17 +12,18 @@ export default class Gauge extends Component {
     super(props);
 
     this.state = {
-      // todos: [],
-    };
+      progress: 0
+    }
   }
 
-  componentDidUpdate() {
-    console.log(this.props.todos)
+  calProgress (todos) {
+    const doneCount = todos.filter((todo) => { return (todo.done) }).length
+    return doneCount / 5
   }
 
   render() {
     return (
-      <Progress.Bar progress={0.3} width={270} height={15} />
+      <Progress.Bar progress={this.calProgress(this.props.todos)} width={270} height={15} />
     );
   }
 }
