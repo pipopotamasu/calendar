@@ -30,11 +30,9 @@ export default class App extends Component {
   }
 
   async componentWillMount() {
-    const today = this.props.today
-
     const res = await DB.todo.find({
         where: {
-          created_at: today
+          created_at: this.today()
         },
         order: {
             id: 'ASC',
