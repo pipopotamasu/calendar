@@ -7,25 +7,15 @@ import {
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 
-export default class Gauge extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      progress: 0
-    }
-  }
-
-  calProgress (todos) {
+export default Gauge = (props) => {
+  function calProgress (todos) {
     const doneCount = todos.filter((todo) => { return (todo.done) }).length
     return doneCount / 5
   }
 
-  render() {
-    return (
-      <Progress.Bar progress={this.calProgress(this.props.todos)} width={270} height={15} />
-    );
-  }
+  return (
+    <Progress.Bar progress={calProgress(props.todos)} width={270} height={15} />
+  );
 }
 
 const styles = StyleSheet.create({
