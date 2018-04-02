@@ -53,7 +53,7 @@ export default class App extends Component {
   }
 
   async saveTodos(todos) {
-    const today = this.props.today
+    const today = this.today()
     for(let i in INITIAL_TODOS) {
       await DB.todo.add(Object.assign(INITIAL_TODOS[i], { created_at: today }))
     }
