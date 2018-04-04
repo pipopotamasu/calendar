@@ -20,7 +20,7 @@ const INITIAL_TODOS = [{ id: 1, text: 'test1', done: false, created_at: null },
                        { id: 5, text: 'test5', done: false, created_at: null }]
 
 
-export default class App extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
 
