@@ -3,9 +3,23 @@ import {
   Text,
   View
 } from 'react-native';
+import { Calendar } from 'react-native-calendars';
 
-export default () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#333' }}>
-    <Text style={{ color: 'white' }}>Calendar Screen</Text>
-  </View>
-);
+export default class TodoCalendar extends Component {
+  constructor(props) {
+    super(props);
+
+    // this.state = {
+    //   todos: [],
+    // };
+  }
+
+  render() {
+
+    return (
+      <View>
+        <Calendar />
+      </View>
+    );
+  }
+}
