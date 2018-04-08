@@ -19,11 +19,11 @@ import DiscriptionScreen from './components/Discription'
 
 const RootTabs = TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
     Calendar: {
       screen: CalendarScreen,
+    },
+    Home: {
+      screen: HomeScreen,
     },
     Discription: {
       screen: DiscriptionScreen,
