@@ -16,14 +16,23 @@ import HomeScreen from './components/Home';
 import CalendarScreen from './components/Calendar';
 import DiscriptionScreen from './components/Discription'
 
+function today() {
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = today.getMonth() + 1
+  const day = today.getDate()
+  return `${year}-${month}-${day}`;
+}
+
+const customProps = { today: today() }
 
 const RootTabs = TabNavigator(
   {
     Calendar: {
-      screen: CalendarScreen,
+      screen: props => <CalendarScreen {...props} {...customProps} />
     },
     Home: {
-      screen: HomeScreen,
+      screen: props => <HomeScreen {...props} {...customProps} />
     },
     Discription: {
       screen: DiscriptionScreen,

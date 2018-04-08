@@ -15,13 +15,12 @@ export default class TodoCalendar extends Component {
   }
 
   render() {
-
     return (
       <View>
         <Calendar
           markedDates={
             {
-             '2018-04-08': { color: 'green' }
+              [this.props.today]: { color: 'green' }
             }
           }
           markingType={'period'}
