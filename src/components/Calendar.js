@@ -18,7 +18,14 @@ export default class TodoCalendar extends Component {
 
     return (
       <View>
-        <Calendar />
+        <Calendar
+          markedDates={
+            {
+             '2018-04-08': { color: 'green' }
+            }
+          }
+          markingType={'period'}
+        />
       </View>
     );
   }
