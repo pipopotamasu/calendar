@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import Store from 'react-native-store';
@@ -42,6 +43,7 @@ export default class TodoCalendar extends Component {
 
       if (res) todos_group_by_day = Object.assign(todos_group_by_day, { [fullYMD]: res })
     }
+
     this.setState({
       todos_group_by_day: todos_group_by_day
     });
@@ -53,7 +55,15 @@ export default class TodoCalendar extends Component {
     }
   }
 
+  onClick = (todos_group_by_day) => () => {
+    console.log(todos_group_by_day)
+  }
+
   render() {
+    const {
+      todos_group_by_day
+    } = this.state
+
     return (
       <View>
         <Calendar
@@ -62,6 +72,10 @@ export default class TodoCalendar extends Component {
           }
           markingType={'period'}
         />
+        <Button
+          onPress={this.onClick(todos_group_by_day)}
+          title='debug'
+        ></Button>
       </View>
     );
   }
