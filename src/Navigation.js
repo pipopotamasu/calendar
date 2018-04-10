@@ -19,8 +19,8 @@ import DiscriptionScreen from './components/Discription'
 function today() {
   const today = new Date()
   const year = today.getFullYear()
-  const month = today.getMonth() + 1
-  const day = today.getDate()
+  const month = ( "0" + ( today.getMonth() + 1 )).slice(-2)
+  const day = ( "0" + today.getDate()).slice(-2)
   return `${year}-${month}-${day}`;
 }
 
