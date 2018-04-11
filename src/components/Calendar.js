@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View,
-  Button
+  View
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import Store from 'react-native-store';
@@ -21,7 +20,7 @@ export default class TodoCalendar extends Component {
   }
 
   async componentWillMount() {
-    this.fetchTodos()
+    await this.fetchTodos()
   }
 
   async fetchTodos () {
@@ -49,14 +48,13 @@ export default class TodoCalendar extends Component {
     });
   }
 
-  markedColorDates () {
-    return {
-      [this.props.today]: { color: 'rgb(0,128,0)' }
+  markedColorDates (todos_group_by_day) {
+    let datesWithColor = {}
+    for (let date in todos_group_by_day) {
+      dateWithColor = { [date]: { color: 'rgb(0,128,0)' } }
+      datesWithColor = Object.assign(datesWithColor, dateWithColor)
     }
-  }
-
-  onClick = (todos_group_by_day) => () => {
-    console.log(todos_group_by_day)
+    return datesWithColor
   }
 
   render() {
@@ -68,14 +66,10 @@ export default class TodoCalendar extends Component {
       <View>
         <Calendar
           markedDates={
-            this.markedColorDates()
+            this.markedColorDates(todos_group_by_day)
           }
           markingType={'period'}
         />
-        <Button
-          onPress={this.onClick(todos_group_by_day)}
-          title='debug'
-        ></Button>
       </View>
     );
   }
