@@ -68,7 +68,7 @@ export default class TodoCalendar extends Component {
   calColor (progress) {
     switch (progress) {
       case 0:
-        return 'rgb(0,0,0)'
+        return 'rgb(255,255,255)'
         break;
       case 0.2:
         return 'rgb(0,256,0)'
