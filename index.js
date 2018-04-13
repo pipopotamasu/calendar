@@ -4,12 +4,13 @@ import App from './src/Navigation';
 
 class RootComponent extends Component {
   render() {
-    return <App onNavigationStateChange={this.hoge}/>
+    return <App onNavigationStateChange={this.onNavigationStateChange}/>
   }
 
-  hoge(prevState, currentState, action) {
-    console.log(prevState)
-    console.log('hoge')
+  onNavigationStateChange(prevState, currentState, action) {
+    if(action.routeName == 'Calendar') {
+      console.log(1)
+    }
   }
 }
 
