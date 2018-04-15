@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.2.0",
     "react-native": "0.52.2",
+    "react-native-calendars": "^1.17.7",
     "react-native-check-box": "^2.0.2",
     "react-native-progress": "^3.4.0",
     "react-native-store": "^0.4.1",

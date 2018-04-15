@@ -11,25 +11,40 @@ import {
   Text,
   View
 } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, TabBarBottom } from 'react-navigation';
 import HomeScreen from './components/Home';
 import CalendarScreen from './components/Calendar';
 import DiscriptionScreen from './components/Discription'
 
+function today() {
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = ( "0" + ( today.getMonth() + 1 )).slice(-2)
+  const day = ( "0" + today.getDate()).slice(-2)
+  return `${year}-${month}-${day}`;
+}
+
+const customProps = { today: today() }
 
 const RootTabs = TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
     Calendar: {
-      screen: CalendarScreen,
+      screen: props => <CalendarScreen {...props} {...customProps} />
+    },
+    Home: {
+      screen: props => <HomeScreen {...props} {...customProps} />
     },
     Discription: {
       screen: DiscriptionScreen,
     },
   },
   {
+    navigationOptions: ({ navigation }) => ({
+      tabBarOnPress: navInfo => {
+        console.log(navInfo)
+        navInfo.jumpToIndex(navInfo.scene.index);
+      },
+    }),
     tabBarPosition: 'bottom',
     animationEnabled: true,
     showIcon: 'true',

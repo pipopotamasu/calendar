@@ -20,7 +20,7 @@ const INITIAL_TODOS = [{ id: 1, text: 'test1', done: false, created_at: null },
                        { id: 5, text: 'test5', done: false, created_at: null }]
 
 
-export default class App extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,7 @@ export default class App extends Component {
   async componentWillMount() {
     const res = await DB.todo.find({
         where: {
-          created_at: this.today()
+          created_at: this.props.today
         },
         order: {
             id: 'ASC',
@@ -53,9 +53,8 @@ export default class App extends Component {
   }
 
   async saveTodos(todos) {
-    const today = this.props.today
     for(let i in INITIAL_TODOS) {
-      await DB.todo.add(Object.assign(INITIAL_TODOS[i], { created_at: today }))
+      await DB.todo.add(Object.assign(INITIAL_TODOS[i], { created_at: this.props.today }))
     }
   }
 
@@ -74,14 +73,6 @@ export default class App extends Component {
     });
   }
 
-  today() {
-    const today = new Date()
-    const year = today.getFullYear()
-    const month = today.getMonth() + 1
-    const day = today.getDate()
-    return `${year}-${month}-${day}`;
-  }
-
   render() {
     const {
       todos
@@ -90,7 +81,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.dateContainer}>
-          <Text>{ this.today() + 'のTodo' }</Text>
+          <Text>{ this.props.today + 'のTodo' }</Text>
         </View>
         <View style={styles.gaugeContainer}>
           <Gauge todos={todos}></Gauge>
