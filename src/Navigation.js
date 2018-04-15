@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, TabBarBottom } from 'react-navigation';
 import HomeScreen from './components/Home';
 import CalendarScreen from './components/Calendar';
 import DiscriptionScreen from './components/Discription'
@@ -39,6 +39,12 @@ const RootTabs = TabNavigator(
     },
   },
   {
+    navigationOptions: ({ navigation }) => ({
+      tabBarOnPress: navInfo => {
+        console.log(navInfo)
+        navInfo.jumpToIndex(navInfo.scene.index);
+      },
+    }),
     tabBarPosition: 'bottom',
     animationEnabled: true,
     showIcon: 'true',
